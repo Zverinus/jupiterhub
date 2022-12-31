@@ -1,0 +1,28 @@
+version: "2.9"
+
+services:
+  juphub:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    image: jupyterhub
+    container_name: jupyterhub
+    networks:
+      - jupyterhub-network
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:rw"
+      - "jupyterhub-data:/data"
+    ports:
+      - "8000:8000"
+    environment:
+      DOCKER_SPAWN_CMD: start-singleuser.sh
+    command: >
+      jupyterhub -f /srv/jupyterhub/jupyterhub_config.py
+
+volumes:
+  jupyterhub-data:
+
+networks:
+  jupyterhub-network:
+    name: jupyterhub-network
