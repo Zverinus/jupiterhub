@@ -5,6 +5,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        NOTEBOOKS_FROM: .
+        HUB_PATH: .
+
     restart: always
     image: jupyterhub
     container_name: jupyterhub
