@@ -4,8 +4,7 @@ c = get_config()
 
 c.JupyterHub.spawner_class = "dockerspawner.DockerSpawner"
 c.DockerSpawner.image = "jupyter/minimal-notebook:latest"
-spawn_cmd = os.environ.get("DOCKER_SPAWN_CMD", "start-singleuser.sh")
-c.DockerSpawner.cmd = spawn_cmd
+
 c.DockerSpawner.use_internal_ip = True
 c.DockerSpawner.network_name = "jupyterhub-network"
 c.DockerSpawner.notebook_dir = "/home"

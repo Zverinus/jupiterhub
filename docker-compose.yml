@@ -15,8 +15,6 @@ services:
       - "jupyterhub-data:/data"
     ports:
       - "8000:8000"
-    environment:
-      DOCKER_SPAWN_CMD: start-singleuser.sh
     command: >
       jupyterhub -f /srv/jupyterhub/jupyterhub_config.py
 
